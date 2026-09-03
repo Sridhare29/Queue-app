@@ -1,16 +1,11 @@
 import './App.css'
+import Header from './components/Header'
 
 
 function App() {
   return (
-    <div className="app-shell">
-      <div className="app-header">
-        <p className="eyebrow">QUEUE CONTROL</p>
-        <button className="button-user">Register User</button>
-      </div>
-        <div className="api-status">
-          <span className="status-dot" /> API connected at Queue
-        </div>
+    <div className="App">
+      <Header />
         <div className="panel queue-panel"><div className="panel-heading"><div><p className="eyebrow">QUEUE</p><h3>Queue actions</h3></div><button className="button button-quiet" >Refresh list</button></div>
             <div className="action-grid"><button className="action-tile primary-action" ><span className="tile-number">01</span><span><strong>Generate token</strong><small>Add a new visitor to the queue</small></span></button><label className="field compact-field"><span>Counter ID</span><input  placeholder="e.g. 1" /></label><button className="action-tile" ><span className="tile-number">02</span><span><strong>Call next</strong><small>Send the next visitor to a counter</small></span></button></div>
             <div className="token-tools"><label className="field"><span>Token ID</span><input placeholder="Paste a token ID" /></label><div className="button-row"><button className="button button-outline" >Check status</button><button className="button button-dark" >Complete token</button></div></div>

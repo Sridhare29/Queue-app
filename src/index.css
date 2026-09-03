@@ -10,23 +10,24 @@
   --border: #dfe5ec;
   --white: #ffffff;
 
-  --primary: #6366f1;
-  --secondary: #8b5cf6;
+  --primary: #04B2D9;
+  --secondary: #75BFB8;
   --success: #20a464;
   --danger: #ef6b6b;
 
   --gradient: linear-gradient(
     135deg,
-    #6366f1 0%,
-    #8b5cf6 50%,
-    #ec4899 100%
+    #04B2D9 0%,
+    #75BFB8 33%,
+    #9ABF80 66%,
+    #BED95B 100%
   );
 
   --page-gradient: linear-gradient(
     135deg,
-    #eef2ff 0%,
-    #f5f3ff 45%,
-    #fdf2f8 100%
+    #e6f8fb 0%,
+    #eef8f2 45%,
+    #f7fbe8 100%
   );
 }
 
