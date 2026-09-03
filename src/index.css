@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+/* =========================
+   Global
+========================= */
+
+:root {
+  --text: #172033;
+  --muted: #667085;
+  --border: #dfe5ec;
+  --white: #ffffff;
+
+  --primary: #6366f1;
+  --secondary: #8b5cf6;
+  --success: #20a464;
+  --danger: #ef6b6b;
+
+  --gradient: linear-gradient(
+    135deg,
+    #6366f1 0%,
+    #8b5cf6 50%,
+    #ec4899 100%
+  );
+
+  --page-gradient: linear-gradient(
+    135deg,
+    #eef2ff 0%,
+    #f5f3ff 45%,
+    #fdf2f8 100%
+  );
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--page-gradient);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
