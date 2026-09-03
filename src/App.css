@@ -64,7 +64,7 @@
 
 .button-user {
   border: 0;
-  border-radius: 999px;
+  border-radius: 8px;
 
   padding: 9px 18px;
 
@@ -86,6 +86,11 @@
   box-shadow: 0 8px 24px rgba(4, 178, 217, 0.32);
 }
 
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 /* =========================
    API Status
 ========================= */
