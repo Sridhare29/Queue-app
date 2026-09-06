@@ -8,7 +8,9 @@ interface IApiSpecifications {
   [name: string]: IApiSpec;
 }
 
-export const API_BASE_URL = 'https://localhost:7173';
+const isDevelopment = (import.meta as ImportMeta & { env: { DEV: boolean } }).env.DEV;
+
+export const API_BASE_URL = isDevelopment ? '' : 'https://localhost:7173';
 
 const apiSpecifications: IApiSpecifications = {
   generateToken: {

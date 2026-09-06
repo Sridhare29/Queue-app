@@ -1,16 +1,18 @@
+import http from "axios";
 import apiSpecifications from "../@constants/apiSpecifications";
 import apiFactory from "../@factories/api.factory";
+import type { RequestToken } from "../@factories/request";
 
 export default apiFactory({
-    async generateToken({ throwTheErr }: { throwTheErr: boolean }) {
-        try {
-            const response = await fetch(apiSpecifications.generateToken.key, {
-                method: apiSpecifications.generateToken.method,
-            });
-
-            return response;
-        } catch {
-            return this.base.handleError({ throwTheErr });
-        }
-    },
+  async generateToken(requestData: RequestToken) {
+    try {
+      return await http.post(
+        apiSpecifications.generateToken.key,
+        requestData
+      );
+    } catch (error) {
+      console.error("Failed to generate token:", error);
+      throw error;
+    }
+  },
 });
