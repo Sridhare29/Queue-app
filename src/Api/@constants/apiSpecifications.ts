@@ -1,6 +1,5 @@
 interface IApiSpec {
   key: string;
-  method: 'GET' | 'POST' | 'PUT';
   version?: string;
 }
 
@@ -11,27 +10,23 @@ interface IApiSpecifications {
 const isDevelopment = (import.meta as ImportMeta & { env: { DEV: boolean } }).env.DEV;
 
 export const API_BASE_URL = isDevelopment ? '' : 'https://localhost:7173';
+const QUEUE_API_URL = `${API_BASE_URL}/api/Queue`;
 
 const apiSpecifications: IApiSpecifications = {
   generateToken: {
-    key: `${API_BASE_URL}/api/Queue/generate`,
-    method: 'POST',
+    key: `${QUEUE_API_URL}/generate`,
   },
   callNext: {
-    key: `${API_BASE_URL}/api/Queue/call-next/{tokenNo}`,
-    method: 'POST',
+    key: `${QUEUE_API_URL}/call-next/{tokenNo}`,
   },
   complete: {
-    key: `${API_BASE_URL}/api/Queue/complete/{tokenNo}`,
-    method: 'PUT',
+    key: `${QUEUE_API_URL}/complete/{tokenNo}`,
   },
   waiting: {
-    key: `${API_BASE_URL}/api/Queue/waiting`,
-    method: 'GET',
+    key: `${QUEUE_API_URL}/waiting`,
   },
   status: {
-    key: `${API_BASE_URL}/api/Queue/status/{tokenNo}`,
-    method: 'GET',
+    key: `${QUEUE_API_URL}/status/{tokenNo}`,
   },
 };
 
