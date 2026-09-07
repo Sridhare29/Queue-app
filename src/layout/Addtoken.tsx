@@ -1,6 +1,7 @@
 import { Input, Modal } from "antd";
 import { useState } from "react";
-import generateTokenApi from "../Api/GenerateToken/generateToken.api";
+import { useDispatch } from "react-redux";
+import { getgenerateToken } from "../state/action/generateToken.Action";
 
 type AddTokenProps = {
   open: boolean;
@@ -8,6 +9,7 @@ type AddTokenProps = {
 };
 
 function AddToken({ open, onClose }: AddTokenProps) {
+  const dispatch = useDispatch<any>();
   const [name, setName] = useState("");
   const [mobileNo, setMobileNo] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -18,10 +20,10 @@ function AddToken({ open, onClose }: AddTokenProps) {
     setIsSubmitting(true);
 
     try {
-      await generateTokenApi.generateToken({
+      await dispatch(getgenerateToken({
         name: name.trim(),
         mobileNo: mobileNo.trim(),
-      });
+      }));
 
       setName("");
       setMobileNo("");
