@@ -5,6 +5,7 @@ function TokenCard() {
   const token = useSelector(
     (state: RootState) => state.generateToken.generateToken
   );
+  console.log("TokenCard token:", token);
 
   if (!token.tokenNo) {
     return (
@@ -22,7 +23,8 @@ function TokenCard() {
         #{String(token.tokenNo).padStart(3, "0")}
       </h1>
       <div className="token-card__divider" />
-      <p className="token-card__name">{token.name}</p>
+      <p className="token-card__name">{token.status}</p>
+    <p className="token-card__label">{token.userName}</p>
     </div>
   );
 }
