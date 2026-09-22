@@ -18,6 +18,10 @@ function Header() {
             Token
           </Button>
 
+          <a className="button-user" href="/admin-counter">
+            Admin 
+          </a>
+
           <AddToken
             open={isModalVisible}
             onClose={closeModal}

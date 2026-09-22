@@ -10,7 +10,6 @@ export const getWaitingTokens = () => async (dispatch: any) => {
     });
     return response.data;
   } catch (error) {
-    console.error("Error fetching waiting tokens:", error);
     throw error;
   }
 };
