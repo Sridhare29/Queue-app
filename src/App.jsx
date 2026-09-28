@@ -2,7 +2,7 @@ import './App.css'
 import Header from './components/Header'
 import TokenCard from './layout/TokenCard'
 import WaitingList from './layout/WaitingList'
-import AdminCounter from './layout/AdminCounter'
+import AdminCounter from './components/AdminCounter'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 function PublicQueue() {
