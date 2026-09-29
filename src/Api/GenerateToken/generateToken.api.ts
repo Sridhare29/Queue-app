@@ -1,4 +1,4 @@
-import http from "axios";
+import { queueHttp } from "../@factories/http";
 import apiSpecifications from "../@constants/apiSpecifications";
 import apiFactory from "../@factories/api.factory";
 import type { RequestToken } from "../@factories/request";
@@ -6,7 +6,7 @@ import type { RequestToken } from "../@factories/request";
 export default apiFactory({
   async generateToken(requestData: RequestToken) {
     try {
-      const response = await http.post(
+      const response = await queueHttp.post(
         apiSpecifications.generateToken.key,
         requestData
       );

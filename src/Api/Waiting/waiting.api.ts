@@ -1,4 +1,4 @@
-import http from "axios";
+import { queueHttp } from "../@factories/http";
 import apiSpecifications from "../@constants/apiSpecifications";
 import apiFactory from "../@factories/api.factory";
 
@@ -14,7 +14,7 @@ export type WaitingToken = {
 export default apiFactory({
   async getWaitingTokens() {
     try {
-      const response = await http.get<WaitingToken[]>(
+      const response = await queueHttp.get<WaitingToken[]>(
         apiSpecifications.waiting.key
       );
       return response;

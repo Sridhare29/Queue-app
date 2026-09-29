@@ -1,0 +1,276 @@
+/* ---------- Tokens ---------- */
+.header-profile,
+.profile-popover {
+  --pm-ink: #16302b;
+  --pm-muted: #5f7570;
+  --pm-accent: #1f7a5c;
+  --pm-stub: #e9f4ef;
+  --pm-paper: #ffffff;
+  --pm-line: #d5e3dd;
+  --pm-hover: #f2f7f5;
+  --pm-danger: #b42318;
+  --pm-danger-bg: #fdf0ee;
+}
+
+/* ---------- Trigger (native button) ---------- */
+.header-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 8px 4px 4px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.header-profile:hover,
+.header-profile.is-open {
+  background: rgba(31, 122, 92, 0.1);
+}
+
+.header-profile:focus-visible {
+  outline: 2px solid var(--pm-accent);
+  outline-offset: 2px;
+}
+
+.header-profile__avatar {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--pm-accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.header-profile__details {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.header-profile__details small {
+  opacity: 0.7;
+}
+
+.header-profile__chevron {
+  font-size: 10px;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+
+.header-profile.is-open .header-profile__chevron {
+  transform: rotate(180deg);
+}
+
+/* ---------- Popover shell ---------- */
+/* The ticket shape is cut with a mask, so the antd shell must be
+   transparent and carry the shadow as a drop-shadow filter. */
+.profile-popover-overlay .ant-popover-inner {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  filter: drop-shadow(0 8px 20px rgba(22, 48, 43, 0.18));
+}
+
+.profile-popover-overlay .ant-popover-content {
+  overflow: visible;
+}
+
+/* ---------- Ticket ---------- */
+.profile-popover {
+  --stub-h: 84px;
+  width: 260px;
+  border-radius: 14px;
+  background: var(--pm-paper);
+  color: var(--pm-ink);
+  overflow: hidden;
+  /* Half-circle notches on both edges where the stub is torn off */
+  -webkit-mask:
+    radial-gradient(circle 9px at 0 var(--stub-h), #0000 97%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle 9px at 100% var(--stub-h), #0000 97%, #000) right / 51% 100% no-repeat;
+  mask:
+    radial-gradient(circle 9px at 0 var(--stub-h), #0000 97%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle 9px at 100% var(--stub-h), #0000 97%, #000) right / 51% 100% no-repeat;
+}
+
+.profile-popover__stub {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: var(--stub-h);
+  padding: 0 18px;
+  background: var(--pm-stub);
+}
+
+.profile-popover__avatar {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border-radius: 12px;
+  background: var(--pm-accent);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.profile-popover__user {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.profile-popover__user strong {
+  overflow: hidden;
+  font-size: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-popover__user small {
+  color: var(--pm-muted);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Dashed tear line, sits exactly on the notch centre */
+.profile-popover__perforation {
+  height: 0;
+  margin: 0 14px;
+  border-top: 2px dashed var(--pm-line);
+}
+
+/* ---------- Actions ---------- */
+.profile-popover__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 8px 6px;
+}
+
+.profile-popover__actions .ant-btn.profile-popover__item,
+.profile-popover__item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  width: 100%;
+  height: auto;
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: var(--pm-ink);
+  font-size: 14px;
+  text-align: left;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.profile-popover__actions .ant-btn.profile-popover__item:hover,
+.profile-popover__item:hover {
+  background: var(--pm-hover);
+  color: var(--pm-ink);
+}
+
+.profile-popover__item:focus-visible {
+  outline: 2px solid var(--pm-accent);
+  outline-offset: -2px;
+}
+
+.profile-popover__item-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border-radius: 8px;
+  background: var(--pm-stub);
+  color: var(--pm-accent);
+  font-size: 15px;
+}
+
+.profile-popover__item-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.profile-popover__item-text small {
+  color: var(--pm-muted);
+  font-size: 12px;
+}
+
+/* Sign out */
+.profile-popover__actions .ant-btn.profile-popover__item--danger:hover {
+  background: var(--pm-danger-bg);
+  color: var(--pm-danger);
+}
+
+.profile-popover__item--danger .profile-popover__item-icon {
+  background: var(--pm-danger-bg);
+  color: var(--pm-danger);
+}
+
+/* ---------- Footer / status ---------- */
+.profile-popover__footer {
+  padding: 8px 18px 14px;
+  border-top: 1px solid var(--pm-line);
+  margin: 6px 14px 0;
+  padding-left: 4px;
+}
+
+.profile-popover .api-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--pm-muted);
+  font-size: 12px;
+}
+
+.profile-popover .status-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22a06b;
+}
+
+.profile-popover .status-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #22a06b;
+  animation: pm-ping 2s ease-out infinite;
+}
+
+@keyframes pm-ping {
+  0% { transform: scale(1); opacity: 0.6; }
+  80%, 100% { transform: scale(2.6); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-popover .status-dot::after { animation: none; }
+  .header-profile__chevron,
+  .header-profile,
+  .profile-popover__item { transition: none; }
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 480px) {
+  .header-profile__details,
+  .header-profile__chevron { display: none; }
+  .profile-popover { width: min(260px, calc(100vw - 32px)); }
+}

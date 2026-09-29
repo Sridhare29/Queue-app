@@ -1,7 +1,8 @@
 import { Input, Modal } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getgenerateToken } from "../state/action/generateToken.Action";
+import { getUserProfile } from "../auth/session";
 
 type AddTokenProps = {
   open: boolean;
@@ -15,6 +16,9 @@ function AddToken({ open, onClose }: AddTokenProps) {
   const [mobileError, setMobileError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const profile = getUserProfile();
+
+
   const handleSubmit = async () => {
     if (!name.trim() || !mobileNo.trim()) return;
 
@@ -27,7 +31,7 @@ function AddToken({ open, onClose }: AddTokenProps) {
 
     try {
       await dispatch(getgenerateToken({
-        name: name.trim(),
+        name: profile?.name || name.trim(),
         mobileNo: mobileNo.trim(),
       }));
 
@@ -54,7 +58,7 @@ function AddToken({ open, onClose }: AddTokenProps) {
       <div className="input-group">
         <Input
           placeholder="Name"
-          value={name}
+          value={profile?.name || name}
           onChange={(e) => setName(e.target.value)}
         />
 
@@ -63,7 +67,7 @@ function AddToken({ open, onClose }: AddTokenProps) {
           type="tel"
           inputMode="numeric"
           maxLength={10}
-          value={mobileNo}
+          value={profile?.mobileNumber || mobileNo}
           status={mobileError ? "error" : undefined}
           onChange={(e) => {
             setMobileNo(e.target.value);

@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { services } from "../Api";
 import type { WaitingToken } from "../Api/Waiting/waiting.api";
 import { getWaitingTokens } from "../state/action/waiting.Action";
 import type { RootState } from "../state/store";
+import { clearSession } from "../auth/session";
 
 function AdminCounter() {
   const dispatch = useDispatch<any>();
+  const navigate = useNavigate();
 
   const waitingTokens = useSelector(
     (state: RootState) => state.generateToken.waitingTokens as WaitingToken[]
@@ -20,6 +22,11 @@ function AdminCounter() {
   const [error, setError] = useState("");
 
   const refreshQueue = () => dispatch(getWaitingTokens());
+
+  const handleLogout = () => {
+    clearSession();
+    navigate("/login", { replace: true });
+  };
 
   useEffect(() => {
     refreshQueue();
@@ -88,9 +95,11 @@ function AdminCounter() {
           </p>
         </div>
 
-        <Link className="admin-header__back" to="/">
-          Public queue
-        </Link>
+        <nav className="admin-header__actions">
+          <Link className="admin-header__back" to="/admin/login">Admin sign in</Link>
+          <Link className="admin-header__back" to="/">Public queue</Link>
+          <button className="admin-header__back admin-logout" type="button" onClick={handleLogout}>Sign out</button>
+        </nav>
       </header>
 
       <main className="admin-content">

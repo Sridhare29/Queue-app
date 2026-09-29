@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 import AddToken from "../layout/addtoken";
+import ProfileMenu from "../layout/profileMenu";
 
 function Header() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -11,25 +13,20 @@ function Header() {
   return (
     <div className="app-shell">
       <div className="app-header">
-        <p className="eyebrow">KANINI QUEUE</p>
+        <div className="header-identity">
+          <p className="eyebrow">KANINI QUEUE</p>
+        </div>
 
         <div className="header-actions">
-          <Button className="button-user" onClick={showModal}>
-            Token
+          <Button
+            className="button-user"
+            icon={<PlusOutlined />}
+            onClick={showModal}
+          >
+            Add token
           </Button>
-
-          <a className="button-user" href="/admin-counter">
-            Admin 
-          </a>
-
-          <AddToken
-            open={isModalVisible}
-            onClose={closeModal}
-          />
-
-          <div className="api-status">
-            <span className="status-dot" /> Active
-          </div>
+          <ProfileMenu onAddToken={showModal} />
+          <AddToken open={isModalVisible} onClose={closeModal} />
         </div>
       </div>
     </div>

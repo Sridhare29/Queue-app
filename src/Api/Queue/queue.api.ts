@@ -1,4 +1,4 @@
-import http from "axios";
+import { queueHttp } from "../@factories/http";
 import apiSpecifications from "../@constants/apiSpecifications";
 import apiFactory from "../@factories/api.factory";
 
@@ -7,14 +7,14 @@ const tokenEndpoint = (template: string, tokenNo: string) =>
 
 export default apiFactory({
   async callNext(tokenNo: string, counterId: number) {
-    return http.post(
+    return queueHttp.post(
       tokenEndpoint(apiSpecifications.callNext.key, tokenNo),
       { counterId }
     );
   },
 
   async complete(tokenNo: string) {
-    return http.put(
+    return queueHttp.put(
       tokenEndpoint(apiSpecifications.complete.key, tokenNo),
     );
   },
